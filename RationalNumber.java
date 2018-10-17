@@ -13,6 +13,11 @@ public class RationalNumber extends RealNumber
     this.reduce();
   }
 
+  public RationalNumber(){
+    numerator=0;
+    denominator=1;
+  }
+
   public double getValue(){
     return numerator/denominator;
   }
@@ -34,15 +39,15 @@ public class RationalNumber extends RealNumber
   *and denominator as this RationalNumber but reversed.
   */
   public RationalNumber reciprocal(){
-    //if(this.getDenominator()==0)
-    //{
-      //return RationalNumber(this.getDenominator(),this.getNumerator());
-    //}
-    //else
+    if(this.getDenominator()==0)
     {
       RationalNumber answer=
         new RationalNumber(0,1);
       return answer;
+    }
+    else
+    {
+      return new RationalNumber(this.getDenominator(),this.getNumerator());
     }
   }
   /**
@@ -108,29 +113,43 @@ public class RationalNumber extends RealNumber
   *Return a new RationalNumber that is the product of this and the other
   */
   public RationalNumber multiply(RationalNumber other){
-    //RationalNumber answer=new RationalNumber
-      //(this.getNumerator()*other.getNumerator(),
-      //this.getDenominator()*other.getDenominator());
-      return null;
+    RationalNumber answer=new RationalNumber
+      (this.getNumerator()*other.getNumerator(),
+      this.getDenominator()*other.getDenominator());
+      return answer;
   }
 
   /**
   *Return a new RationalNumber that is the this divided by the other
   */
   public RationalNumber divide(RationalNumber other){
-    return null;
+    return this.multiply(other.reciprocal());
   }
 
   /**
   *Return a new RationalNumber that is the sum of this and the other
   */
   public RationalNumber add(RationalNumber other){
-    return null;
+    RationalNumber answer=new RationalNumber
+    (
+      this.getNumerator()*other.getDenominator()+
+      other.getNumerator()*this.getDenominator(),
+
+      this.getDenominator()*other.getDenominator()
+    );
+    return answer;
   }
   /**
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    return null;
+    RationalNumber answer=new RationalNumber
+    (
+      this.getNumerator()*other.getDenominator()-
+      other.getNumerator()*this.getDenominator(),
+
+      this.getDenominator()*other.getDenominator()
+    );
+    return answer;
   }
 }
