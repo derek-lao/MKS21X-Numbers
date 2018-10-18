@@ -13,15 +13,16 @@ public class RationalNumber extends RealNumber
     this.reduce();
   }
 
-  public RationalNumber(){
-    numerator=0;
-    denominator=1;
-  }
-
   public double getValue(){
-    return numerator/denominator;
+    if(denominator==0)
+    {
+      return 0.0;
+    }
+    else
+    {
+      return numerator/denominator;
+    }
   }
-
   /**
   *@return the numerator
   */
@@ -41,8 +42,7 @@ public class RationalNumber extends RealNumber
   public RationalNumber reciprocal(){
     if(this.getDenominator()==0)
     {
-      RationalNumber answer=
-        new RationalNumber(0,1);
+      RationalNumber answer=new RationalNumber(0,1);
       return answer;
     }
     else
@@ -62,7 +62,7 @@ public class RationalNumber extends RealNumber
   *@return the value expressed as "3/4" or "8/3"
   */
   public String toString(){
-    return "0";
+    return numerator+"/"+denominator;
   }
 
 
@@ -74,14 +74,50 @@ public class RationalNumber extends RealNumber
   */
   private static int gcd(int a, int b){
     /*use euclids method or a better one*/
+    int absa=Math.abs(a);
+    int absb=Math.abs(b);
     int i=1;
-    while (i>0)
+    int[] intarray={absa,absb,i};
+    if(absa==0)
     {
-      i=a%b;
-      a=b;
-      b=i;
+      return absb;
     }
-    return b;
+    if(absa>absb)
+    {
+      if(absa%absb==0)
+      {
+        return absb;
+      }
+      else
+      {
+        while (i>0)
+        {
+          i=intarray[0]%intarray[1];
+          intarray[0]=intarray[1];
+          intarray[1]=i;
+          intarray[2]=intarray[0]%intarray[1];
+        }
+        return intarray[1];
+      }
+    }
+    else
+    {
+      if(absb%absa==0)
+      {
+        return absa;
+      }
+      else
+      {
+        while (i>0)
+        {
+          i=intarray[1]%intarray[0];
+          intarray[1]=intarray[0];
+          intarray[0]=i;
+          intarray[2]=intarray[1]%intarray[0];
+        }
+        return intarray[0];
+      }
+    }
   }
 
 
@@ -92,16 +128,16 @@ public class RationalNumber extends RealNumber
   *reduced after construction.
   */
   private void reduce(){
-    if(numerator>denominator)
+    //if(numerator>denominator)
+    //{
+      numerator=numerator/gcd(numerator,denominator);
+      denominator=denominator/gcd(numerator,denominator);
+    /*}
+    else
     {
       numerator=numerator/gcd(numerator,denominator);
       denominator=denominator/gcd(numerator,denominator);
-    }
-    else
-    {
-      numerator=numerator/gcd(denominator,numerator);
-      denominator=denominator/gcd(denominator,numerator);
-    }
+    }*/
   }
 
 

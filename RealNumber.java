@@ -5,10 +5,6 @@ public class RealNumber{
     value = v;
   }
 
-  public RealNumber(){
-    value=0;
-  }
-
   /*
   *Return the sum of this and the other
   */
