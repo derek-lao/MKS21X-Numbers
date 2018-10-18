@@ -1,5 +1,4 @@
-public class RationalNumber extends RealNumber
-{
+public class RationalNumber extends RealNumber{
   private int numerator, denominator;
 
   /**Initialize the RationalNumber with the provided values
@@ -20,7 +19,7 @@ public class RationalNumber extends RealNumber
     }
     else
     {
-      return numerator/denominator;
+      return (double) numerator/denominator;
     }
   }
   /**
@@ -40,15 +39,7 @@ public class RationalNumber extends RealNumber
   *and denominator as this RationalNumber but reversed.
   */
   public RationalNumber reciprocal(){
-    if(this.getDenominator()==0)
-    {
-      RationalNumber answer=new RationalNumber(0,1);
-      return answer;
-    }
-    else
-    {
       return new RationalNumber(this.getDenominator(),this.getNumerator());
-    }
   }
   /**
   *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
@@ -74,50 +65,63 @@ public class RationalNumber extends RealNumber
   */
   private static int gcd(int a, int b){
     /*use euclids method or a better one*/
+    int first;
+    int second;
+
     int absa=Math.abs(a);
     int absb=Math.abs(b);
-    int i=1;
-    int[] intarray={absa,absb,i};
-    if(absa==0)
-    {
-      return absb;
-    }
     if(absa>absb)
     {
-      if(absa%absb==0)
-      {
-        return absb;
-      }
-      else
-      {
-        while (i>0)
-        {
-          i=intarray[0]%intarray[1];
-          intarray[0]=intarray[1];
-          intarray[1]=i;
-          intarray[2]=intarray[0]%intarray[1];
-        }
-        return intarray[1];
-      }
+      first=absa;
+      second=absb;
     }
     else
     {
-      if(absb%absa==0)
-      {
-        return absa;
-      }
-      else
-      {
-        while (i>0)
-        {
-          i=intarray[1]%intarray[0];
-          intarray[1]=intarray[0];
-          intarray[0]=i;
-          intarray[2]=intarray[1]%intarray[0];
-        }
-        return intarray[0];
-      }
+      first=absb;
+      second=absa;
     }
+    int i=first%second;
+    if(a==0)
+    {
+      return absb;
+    }
+    if(i==0)
+    {
+      return second;
+    }
+
+    while (i>0)
+    {
+      // i=first%second;
+      // System.out.println("i= "+i);
+      first=second;
+      System.out.println("first= "+first);
+      second=i;
+      System.out.println("second= "+second);
+      i=first%second;
+      System.out.println("i= "+i);
+    }
+    return second;
+
+
+     //  else
+     //  {
+     //    if(absb%absa==0)
+     //    {
+     //      return absa;
+     //    }
+     //    else
+     //    {
+     //      while (i>0)
+     //      {
+     //        i=intarray[1]%intarray[0];
+     //        intarray[1]=intarray[0];
+     //        intarray[0]=i;
+     //        intarray[2]=intarray[1]%intarray[0];
+     //      }
+     //      return intarray[0];
+     //    }
+     // }
   }
 
 
