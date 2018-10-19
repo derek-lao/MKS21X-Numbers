@@ -4,29 +4,29 @@ public class Driver {
     System.out.println();
 
     // RealNumber testing!!!
-    System.out.println("Testing RealNumber class (the easy part!!! hopefully!!!)");
-    System.out.println("----------");
-    RealNumber p = new RealNumber(1.0);
-    RealNumber q = new RealNumber(2.0);
-
-    // toString, RealNumber(s)
-    System.out.print("Real Number p (should print 1.0): ");
-    System.out.println(p);
-    System.out.print("Real Number q (should print 2.0): ");
-    System.out.println(q);
-    System.out.println("----------");
-
-    // RealNumber opeations
-    System.out.print("p + q (should print 3.0): ");
-    System.out.println(p.add(q));
-    System.out.print("p - q (should print -1.0): ");
-    System.out.println(p.subtract(q));
-    System.out.print("p * q (should print 2.0): ");
-    System.out.println(p.multiply(q));
-    System.out.print("p / q (should print 0.5): ");
-    System.out.println(p.divide(q));
-
-    System.out.println();
+    // System.out.println("Testing RealNumber class (the easy part!!! hopefully!!!)");
+    // System.out.println("----------");
+    // RealNumber p = new RealNumber(1.0);
+    // RealNumber q = new RealNumber(2.0);
+    //
+    // // toString, RealNumber(s)
+    // System.out.print("Real Number p (should print 1.0): ");
+    // System.out.println(p);
+    // System.out.print("Real Number q (should print 2.0): ");
+    // System.out.println(q);
+    // System.out.println("----------");
+    //
+    // // RealNumber opeations
+    // System.out.print("p + q (should print 3.0): ");
+    // System.out.println(p.add(q));
+    // System.out.print("p - q (should print -1.0): ");
+    // System.out.println(p.subtract(q));
+    // System.out.print("p * q (should print 2.0): ");
+    // System.out.println(p.multiply(q));
+    // System.out.print("p / q (should print 0.5): ");
+    // System.out.println(p.divide(q));
+    //
+    // System.out.println();
 
     // RationalNumber testing!!!
     System.out.println("Testing RationalNumber class");

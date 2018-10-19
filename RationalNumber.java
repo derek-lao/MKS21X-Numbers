@@ -53,7 +53,14 @@ public class RationalNumber extends RealNumber{
   *@return the value expressed as "3/4" or "8/3"
   */
   public String toString(){
-    return numerator+"/"+denominator;
+    if(denominator==1)
+    {
+      return ""+numerator;
+    }
+    else
+    {
+      return numerator+"/"+denominator;
+    }
   }
 
 
@@ -63,7 +70,7 @@ public class RationalNumber extends RealNumber{
   *@param b the second integer
   *@return the value of the GCD
   */
-  private static int gcd(int a, int b){
+  public static int gcd(int a, int b){
     /*use euclids method or a better one*/
     int first;
     int second;
@@ -78,13 +85,16 @@ public class RationalNumber extends RealNumber{
     else
     {
       first=absb;
+      // System.out.println("first is "+first);
       second=absa;
+      // System.out.println("second is "+second);
     }
-    int i=first%second;
     if(a==0)
     {
       return absb;
     }
+    int i=first%second;
+      // System.out.println("i is "+i);
     if(i==0)
     {
       return second;
@@ -95,11 +105,11 @@ public class RationalNumber extends RealNumber{
       // i=first%second;
       // System.out.println("i= "+i);
       first=second;
-      System.out.println("first= "+first);
+      // System.out.println("first= "+first);
       second=i;
-      System.out.println("second= "+second);
+      // System.out.println("second= "+second);
       i=first%second;
-      System.out.println("i= "+i);
+      // System.out.println("i= "+i);
     }
     return second;
 
@@ -134,14 +144,15 @@ public class RationalNumber extends RealNumber{
   private void reduce(){
     //if(numerator>denominator)
     //{
-      numerator=numerator/gcd(numerator,denominator);
-      denominator=denominator/gcd(numerator,denominator);
-    /*}
-    else
-    {
-      numerator=numerator/gcd(numerator,denominator);
-      denominator=denominator/gcd(numerator,denominator);
-    }*/
+      int reductionfactor=gcd(numerator,denominator);
+      numerator=numerator/reductionfactor;
+      //System.out.println("new numerator is " +numerator);
+      denominator=denominator/reductionfactor;
+      //System.out.println("new denominator is " +denominator);
+
+
+    //if I put debug print statements in my gcd, they will print twice whenever
+    //I call this reduce method, because this reduce method calls gcd twice
   }
 
 
